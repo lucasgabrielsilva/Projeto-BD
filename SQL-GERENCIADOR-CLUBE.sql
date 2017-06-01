@@ -14,10 +14,8 @@ CREATE TABLE IF NOT EXISTS `Estadio` (
   `capacidadeEstadio` INT NOT NULL,
   `Endereco_idEndereco` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idEstadio`),
-    FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `fifinha`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  FOREIGN KEY (`Endereco_idEndereco`)
+  REFERENCES `Endereco` (`idEndereco`));
 
 
 CREATE TABLE IF NOT EXISTS `CT` (
@@ -25,10 +23,8 @@ CREATE TABLE IF NOT EXISTS `CT` (
   `nomeCt` VARCHAR(45) NOT NULL,
   `Endereco_idEndereco` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idCT`),
-    FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `fifinha`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  FOREIGN KEY (`Endereco_idEndereco`)
+  REFERENCES `Endereco` (`idEndereco`));
 
 
 CREATE TABLE IF NOT EXISTS `Clubes` (
@@ -39,20 +35,14 @@ CREATE TABLE IF NOT EXISTS `Clubes` (
   `Endereco_idEndereco` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idClube`),
   UNIQUE (`Estadio_idEstadio`),
-    FOREIGN KEY (`Estadio_idEstadio`)
-    REFERENCES `fifinha`.`Estadio` (`idEstadio`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    UNIQUE (`CT_idCT`),
-    FOREIGN KEY (`CT_idCT`)
-    REFERENCES `fifinha`.`CT` (`idCT`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    UNIQUE (`Endereco_idEndereco`),
-    FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `fifinha`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  FOREIGN KEY (`Estadio_idEstadio`)
+  REFERENCES `Estadio` (`idEstadio`),
+  UNIQUE (`CT_idCT`),
+  FOREIGN KEY (`CT_idCT`)
+  REFERENCES `CT` (`idCT`),
+  UNIQUE (`Endereco_idEndereco`),
+  FOREIGN KEY (`Endereco_idEndereco`)
+  REFERENCES `Endereco` (`idEndereco`));
 
 
 CREATE TABLE IF NOT EXISTS `Planos` (
@@ -72,18 +62,12 @@ CREATE TABLE IF NOT EXISTS `Socios` (
   `Plano_idPlano` INT NOT NULL,
   PRIMARY KEY (`idSocio`),
   UNIQUE (`CPFSocio`),
-    FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `fifinha`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`Clube_idClube`)
-    REFERENCES `fifinha`.`Clubes` (`idClube`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`Plano_idPlano`)
-    REFERENCES `fifinha`.`Planos` (`idPlano`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  FOREIGN KEY (`Endereco_idEndereco`)
+  REFERENCES `Endereco` (`idEndereco`),
+  FOREIGN KEY (`Clube_idClube`)
+  REFERENCES `Clubes` (`idClube`),
+  FOREIGN KEY (`Plano_idPlano`)
+  REFERENCES `Planos` (`idPlano`));
 
 
 CREATE TABLE IF NOT EXISTS `Jogadores` (
@@ -98,14 +82,10 @@ CREATE TABLE IF NOT EXISTS `Jogadores` (
   `Endereco_idEndereco` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idJogador`),
   UNIQUE (`cpfJogador`),
-    FOREIGN KEY (`Clube_idClube`)
-    REFERENCES `fifinha`.`Clubes` (`idClube`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `fifinha`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  FOREIGN KEY (`Clube_idClube`)
+  REFERENCES `Clubes` (`idClube`),
+  FOREIGN KEY (`Endereco_idEndereco`)
+  REFERENCES `Endereco` (`idEndereco`));
 
 
 CREATE TABLE IF NOT EXISTS `Funcionarios` (
@@ -118,101 +98,97 @@ CREATE TABLE IF NOT EXISTS `Funcionarios` (
   `Clube_idClube` INT NOT NULL,
   PRIMARY KEY (`idFuncionario`),
   UNIQUE (`cpfFuncionario`),
-    FOREIGN KEY (`Endereco_idEndereco`)
-    REFERENCES `fifinha`.`Endereco` (`idEndereco`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-    FOREIGN KEY (`Clube_idClube`)
-    REFERENCES `fifinha`.`Clubes` (`idClube`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  FOREIGN KEY (`Endereco_idEndereco`)
+  REFERENCES `Endereco` (`idEndereco`),
+  FOREIGN KEY (`Clube_idClube`)
+  REFERENCES `Clubes` (`idClube`));
     
-    INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('1', '87302090', '1270', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('1', '87302090', '1270', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('2', '90834980', '78', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('2', '90834980', '78', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('3', '78904216', '56', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('3', '78904216', '56', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('4', '87895572', '5780', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('4', '87895572', '5780', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('5', '56784299', '259', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('5', '56784299', '259', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('6', '10568922', '689', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('6', '10568922', '689', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('7', '45789022', '345', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('7', '45789022', '345', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('8', '23478654', '120', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('8', '23478654', '120', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('9', '12639880', '2485', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('9', '12639880', '2485', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('10', '45899521', '750', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('10', '45899521', '750', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('11', '45878451', '650', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('11', '45878451', '650', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('12', '12589022', '1650', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('12', '12589022', '1650', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('13', '45878451', '3870', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('13', '45878451', '3870', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('14', '39895512', '2465', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('14', '39895512', '2465', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('15', '55863471', '526', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('15', '55863471', '526', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('16', '22879641', '860', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('16', '22879641', '860', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('17', '14678290', '1260', 'Brasil');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('17', '14678290', '1260', 'Brasil');
 
-INSERT INTO `fifinha`.`endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('18', '63574498', '4563', 'Brasil');
-
-
-
-INSERT INTO `fifinha`.`planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('1', 'Basico', '25.00');
-
-INSERT INTO `fifinha`.`planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('2', 'Comun', '35.00');
-
-INSERT INTO `fifinha`.`planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('3', 'Master', '50.00');
-
-INSERT INTO `fifinha`.`planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('4', 'Vip', '80.00');
-
-INSERT INTO `fifinha`.`planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('5', 'Familia', '140.00');
+INSERT INTO `endereco` (`idEndereco`, `cepEndereco`, `numeroEndereco`, `paisEndereco`) VALUES ('18', '63574498', '4563', 'Brasil');
 
 
-INSERT INTO `fifinha`.`ct` (`idCT`, `nomeCt`, `Endereco_idEndereco`) VALUES ('1', 'Joaquim Grava', '1');
 
-INSERT INTO `fifinha`.`ct` (`idCT`, `nomeCt`, `Endereco_idEndereco`) VALUES ('2', 'CT CAT', '2');
+INSERT INTO `planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('1', 'Basico', '25.00');
 
+INSERT INTO `planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('2', 'Comun', '35.00');
 
-INSERT INTO `fifinha`.`estadio` (`idEstadio`, `nomeEstadio`, `capacidadeEstadio`, `Endereco_idEndereco`) VALUES ('1', 'Arena Corinthians', '45.200', '3');
+INSERT INTO `planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('3', 'Master', '50.00');
 
-INSERT INTO `fifinha`.`estadio` (`idEstadio`, `nomeEstadio`, `capacidadeEstadio`, `Endereco_idEndereco`) VALUES ('2', 'Arena da Baixada', '40.000', '4');
+INSERT INTO `planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('4', 'Vip', '80.00');
 
-
-INSERT INTO `fifinha`.`clubes` (`idClube`, `nomeClube`, `Estadio_idEstadio`, `CT_idCT`, `Endereco_idEndereco`) VALUES ('1', 'Corinthians', '1', '1', '5');
-
-INSERT INTO `fifinha`.`clubes` (`idClube`, `nomeClube`, `Estadio_idEstadio`, `CT_idCT`, `Endereco_idEndereco`) VALUES ('2', 'Atl Paranaense', '2', '2', '6');
+INSERT INTO `planos` (`idPlano`, `nomePlano`, `valorPlano`) VALUES ('5', 'Familia', '140.00');
 
 
-INSERT INTO `fifinha`.`funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('1', 'João', 'Segurança', '1200.00', '784.528.633-74', '7', '1');
+INSERT INTO `ct` (`idCT`, `nomeCt`, `Endereco_idEndereco`) VALUES ('1', 'Joaquim Grava', '1');
 
-INSERT INTO `fifinha`.`funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('2', 'Joaquim', 'Roupeiro', '1000.00', '562.417.687-55', '8', '1');
-
-INSERT INTO `fifinha`.`funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('3', 'kleber', 'Medico', '3500.00', '163.256.741-96', '9', '2');
-
-INSERT INTO `fifinha`.`funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('4', 'Matheus', 'Motorista', '2000.00', '789.452.698-10', '10', '2');
+INSERT INTO `ct` (`idCT`, `nomeCt`, `Endereco_idEndereco`) VALUES ('2', 'CT CAT', '2');
 
 
-INSERT INTO `fifinha`.`jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('1', 'Ronaldo', '1.88', '100', '789.568.456-12', '350000.00', 'Atacante', '1', '11');
+INSERT INTO `estadio` (`idEstadio`, `nomeEstadio`, `capacidadeEstadio`, `Endereco_idEndereco`) VALUES ('1', 'Arena Corinthians', '45.200', '3');
 
-INSERT INTO `fifinha`.`jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('2', 'Paulo', '1.85', '88', '658.258.4578-16', '275000.00', 'Volante', '1', '12');
+INSERT INTO `estadio` (`idEstadio`, `nomeEstadio`, `capacidadeEstadio`, `Endereco_idEndereco`) VALUES ('2', 'Arena da Baixada', '40.000', '4');
 
-INSERT INTO `fifinha`.`jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('3', 'Walter', '1.90', '105', '756.589.452-42', '200000.00', 'Atacante', '2', '13');
 
-INSERT INTO `fifinha`.`jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('4', 'Cleberson', '1.75', '78', '597.256.968-30', '250000.00', 'Meia', '2', '14');
+INSERT INTO `clubes` (`idClube`, `nomeClube`, `Estadio_idEstadio`, `CT_idCT`, `Endereco_idEndereco`) VALUES ('1', 'Corinthians', '1', '1', '5');
 
-INSERT INTO `fifinha`.`socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('1', 'Ana', '458.125.233-78', 'ana@gmail.com', '15', '1', '1');
+INSERT INTO `clubes` (`idClube`, `nomeClube`, `Estadio_idEstadio`, `CT_idCT`, `Endereco_idEndereco`) VALUES ('2', 'Atl Paranaense', '2', '2', '6');
 
-INSERT INTO `fifinha`.`socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('2', 'Bruna', '455.789.361-45', 'bruna@gmail.com', '16', '1', '2');
 
-INSERT INTO `fifinha`.`socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('3', 'Carlos', '233.587.693-85', 'carlos@gmail.com', '17', '2', '3');
+INSERT INTO `funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('1', 'João', 'Segurança', '1200.00', '784.528.633-74', '7', '1');
 
-INSERT INTO `fifinha`.`socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('4', 'Daniel', '589.125.463-22', 'daniel@gmail.com', '18', '2', '4');
+INSERT INTO `funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('2', 'Joaquim', 'Roupeiro', '1000.00', '562.417.687-55', '8', '1');
+
+INSERT INTO `funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('3', 'kleber', 'Medico', '3500.00', '163.256.741-96', '9', '2');
+
+INSERT INTO `funcionarios` (`idFuncionario`, `nomeFuncionario`, `CargoFuncionario`, `SalarioFuncionario`, `cpfFuncionario`, `Endereco_idEndereco`, `Clube_idClube`) VALUES ('4', 'Matheus', 'Motorista', '2000.00', '789.452.698-10', '10', '2');
+
+
+INSERT INTO `jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('1', 'Ronaldo', '1.88', '100', '789.568.456-12', '350000.00', 'Atacante', '1', '11');
+
+INSERT INTO `jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('2', 'Paulo', '1.85', '88', '658.258.4578-16', '275000.00', 'Volante', '1', '12');
+
+INSERT INTO `jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('3', 'Walter', '1.90', '105', '756.589.452-42', '200000.00', 'Atacante', '2', '13');
+
+INSERT INTO `jogadores` (`idJogador`, `nomeJogador`, `alturaJogador`, `pesoJogador`, `cpfJogador`, `salarioJogador`, `posicaoJogador`, `Clube_idClube`, `Endereco_idEndereco`) VALUES ('4', 'Cleberson', '1.75', '78', '597.256.968-30', '250000.00', 'Meia', '2', '14');
+
+INSERT INTO `socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('1', 'Ana', '458.125.233-78', 'ana@gmail.com', '15', '1', '1');
+
+INSERT INTO `socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('2', 'Bruna', '455.789.361-45', 'bruna@gmail.com', '16', '1', '2');
+
+INSERT INTO `socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('3', 'Carlos', '233.587.693-85', 'carlos@gmail.com', '17', '2', '3');
+
+INSERT INTO `socios` (`idSocio`, `nomeSocio`, `CPFSocio`, `emailSocio`, `Endereco_idEndereco`, `Clube_idClube`, `Plano_idPlano`) VALUES ('4', 'Daniel', '589.125.463-22', 'daniel@gmail.com', '18', '2', '4');
 
