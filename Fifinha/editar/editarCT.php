@@ -10,6 +10,7 @@
             $sql = "SELECT * FROM ct WHERE idCT = '$algo'";
             $result = mysql_query($sql);
             $dadosCT = mysql_fetch_row($result);
+            
             $sql = "SELECT * FROM endereco WHERE idEndereco = '$dadosCT[2]'";
             $result = mysql_query($sql);
             $dadosEndereco = mysql_fetch_row($result);
