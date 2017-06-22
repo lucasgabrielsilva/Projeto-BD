@@ -2,16 +2,16 @@
         <?php
      
             include 'conexao.php';
-            $algo = $_REQUEST['ct'];
-            $sql = "SELECT * FROM ct WHERE idCT = '$algo'";
+            $algo = $_REQUEST['socio'];
+            $sql = "SELECT * FROM socios WHERE idSocio = '$algo'";
             $result = mysql_query($sql);
-            $dadosCT = mysql_fetch_row($result);
+            $dadosSocio = mysql_fetch_row($result);
             
-            $sql = "SELECT * FROM endereco WHERE idEndereco = '$dadosCT[2]'";
+            $sql = "SELECT * FROM endereco WHERE idEndereco = '$dadosSocio[4]'";
             $result = mysql_query($sql);
             $dadosEndereco = mysql_fetch_row($result);
             
-            $sql = "DELETE FROM ct WHERE idCT = '$dadosCT[0]'";
+            $sql = "DELETE FROM socios WHERE idSocio = '$dadosSocio[0]'";
             $result = mysql_query($sql);
             
             $sql = "DELETE FROM endereco WHERE idEndereco = '$dadosEndereco[0]'";

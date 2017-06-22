@@ -10,7 +10,7 @@
 	<body>
             <?php
             if($opcao == '1'){?>
-                <form action="/Fifinha/EDITAR/editar.php" method="post">
+                <form action="\Fifinha\editar\editarEstadio.php" method="post">
                             <div id="titulo">
                                     <label> Estadios </label>
                             </div>	

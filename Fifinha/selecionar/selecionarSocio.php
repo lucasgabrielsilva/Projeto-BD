@@ -1,7 +1,7 @@
 <html>
 	<head>
             <title> FIFINHA </TITLE>
-            <link rel="stylesheet" type="text/css" href="/Fifinha/CSS/CTCss.css" />
+            <link rel="stylesheet" type="text/css" href="/Fifinha/CSS/SocioCss.css" />
 	</head>
         <?php
             include 'conexao.php';
@@ -10,19 +10,19 @@
 	<body>
             <?php
             if($opcao == '1'){?>
-                <form action="/Fifinha/editar/editarCT.php" method="post">
+                <form action="/Fifinha/editar/editarSocio.php" method="post">
                             <div id="titulo">
-                                    <label> CT </label>
+                                    <label> Socio </label>
                             </div>	
                             <div id="opcao">
-                                    <label>Selecione o CT: </label>
-                                    <select name="ct">
+                                    <label>Selecione o Socio: </label>
+                                    <select name="socio">
                                     <option> </option>
                                     <?php
-                                        $sql = 'SELECT * FROM ct';
+                                        $sql = 'SELECT * FROM socios';
                                         $result = mysql_query($sql);
                                         while($dados = mysql_fetch_assoc($result)){ ?>
-                                        <option value ="<?php echo $dados ['idCT']; ?>"><?php echo $dados ['nomeCt']; ?>
+                                        <option value ="<?php echo $dados ['idSocio']; ?>"><?php echo $dados ['nomeSocio']; ?>
                                         </option> <?php
                                         }
                                     ?>
@@ -32,19 +32,19 @@
             <?php }
             else{
                 ?>
-            <form action="/Fifinha/excluir/excluirCT.php" method="post">
+            <form action="/Fifinha/excluir/excluirSocio.php" method="post">
                             <div id="titulo">
-                                    <label> CT </label>
+                                    <label> Socio </label>
                             </div>	
                             <div id="opcao">
-                                    <label>Selecione o CT: </label>
-                                    <select name="ct">
+                                    <label>Selecione o Socio: </label>
+                                    <select name="socio">
                                     <option> </option>
                                     <?php
-                                        $sql = 'SELECT * FROM ct';
+                                        $sql = 'SELECT * FROM socios';
                                         $result = mysql_query($sql);
                                         while($dados = mysql_fetch_assoc($result)){ ?>
-                                        <option value ="<?php echo $dados ['idCT']; ?>"><?php echo $dados ['nomeCt']; ?>
+                                        <option value ="<?php echo $dados ['idSocio']; ?>"><?php echo $dados ['nomeSocio']; ?>
                                         </option> <?php
                                         }
                                     ?>

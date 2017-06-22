@@ -2,18 +2,18 @@
         <?php
      
             include 'conexao.php';
-            $algo = $_REQUEST['ct'];
-            $sql = "SELECT * FROM ct WHERE idCT = '$algo'";
+            $algo = $_REQUEST['clube'];
+            $sql = "SELECT * FROM clubes WHERE idClube = '$algo'";
             $result = mysql_query($sql);
-            $dadosCT = mysql_fetch_row($result);
+            $dadosClube = mysql_fetch_row($result);
             
-            $sql = "SELECT * FROM endereco WHERE idEndereco = '$dadosCT[2]'";
+            $sql = "SELECT * FROM endereco WHERE idEndereco = '$dadosClube[2]'";
             $result = mysql_query($sql);
+            
             $dadosEndereco = mysql_fetch_row($result);
+            $sql = "DELETE FROM clubes WHERE idClube = '$dadosClube[0]'";
             
-            $sql = "DELETE FROM ct WHERE idCT = '$dadosCT[0]'";
             $result = mysql_query($sql);
-            
             $sql = "DELETE FROM endereco WHERE idEndereco = '$dadosEndereco[0]'";
             mysql_query($sql);
             

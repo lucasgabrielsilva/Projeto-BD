@@ -1,6 +1,7 @@
 <html>
 	<head>
             <title> FIFINHA </title>
+            <link rel="stylesheet" type="text/css" href="/Fifinha/CSS/PlanoCss.css" />
 	</head>
         <?php
             include 'conexao.php';
