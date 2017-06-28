@@ -68,8 +68,8 @@ CREATE TABLE IF NOT EXISTS `Socios` (
 CREATE TABLE IF NOT EXISTS `Jogadores` (
   `idJogador` INT NOT NULL,
   `nomeJogador` VARCHAR(45) NOT NULL,
-  `alturaJogador` VARCHAR(45) NOT NULL,
-  `pesoJogador` VARCHAR(45) NOT NULL,
+  `alturaJogador` FLOAT NOT NULL,
+  `pesoJogador` FLOAT NOT NULL,
   `cpfJogador` VARCHAR(45) NOT NULL,
   `salarioJogador` FLOAT NOT NULL,
   `posicaoJogador` VARCHAR(45) NOT NULL,
